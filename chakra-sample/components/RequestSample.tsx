@@ -18,6 +18,13 @@ const get = async () => {
 }
 
 const post = async () => {
+  await refreshCSRFToken();
+
   const response = await axios.post('http://localhost:3000/api/posts', { title: 'hoge'});
+  console.log(response);
+}
+
+const refreshCSRFToken = async () => {
+  const response = await axios.get('http://localhost:3000/sessions');
   console.log(response);
 }

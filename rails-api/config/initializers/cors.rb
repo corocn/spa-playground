@@ -7,7 +7,7 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins ['http://localhost:4000']
+    origins ['http://localhost:4000', 'https://corocn-dev.jp.ngrok.io']
 
     resource '*',
         headers: :any,

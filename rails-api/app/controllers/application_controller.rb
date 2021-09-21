@@ -6,7 +6,8 @@ class ApplicationController < ActionController::API
 
   def set_csrf_token
     cookies['CSRF-TOKEN'] = {
-      value: form_authenticity_token
+      domain: 'corocn-dev.jp.ngrok.io',
+      value: form_authenticity_token,
     }
   end
 end
