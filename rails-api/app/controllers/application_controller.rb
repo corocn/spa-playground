@@ -4,9 +4,22 @@ class ApplicationController < ActionController::API
 
   protect_from_forgery with: :exception
 
+  def current_user
+    User.find(session[:user_id])
+  rescue ActiveRecord::RecordNotFound
+    session[:user_id] = nil
+    nil
+  end
+
+  def authenticate
+    if current_user.blank?
+      render json: {}, status: :unauthorized
+    end
+  end
+
   def set_csrf_token
     cookies['CSRF-TOKEN'] = {
-      domain: 'corocn-dev.jp.ngrok.io',
+      # domain: '',
       value: form_authenticity_token,
     }
   end
