@@ -41,13 +41,10 @@ const get = async () => {
 }
 
 const post = async () => {
-  await refreshCSRFToken();
-
   const response = await axios.post(`${BASE_PATH}/api/posts`, { title: 'hoge'});
   console.log(response);
 }
 
 const refreshCSRFToken = async () => {
-  const response = await axios.get(`${BASE_PATH}/sessions`);
-  console.log(response);
+  await fetchUser();
 }
