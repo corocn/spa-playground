@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  resources :users
   resource :sessions, only: [:show]
 
   namespace :api do
+    resources :users
     resources :posts
   end
 end
